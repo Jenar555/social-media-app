@@ -1,0 +1,39 @@
+type user {
+  _id: ID!
+  username: String!
+  email: String!
+  fullName: String!
+  createdAt: String!
+  updatedAt: String!
+  __v: Int!
+  posts: [Post!]!
+  comments: [Comment!]!
+}
+
+type Post {
+  _id: ID!
+  user: User!
+  caption: String!
+  likes: [User!]!
+  comments: [Comment!]!
+  createdAt: String!
+  updatedAt: String!
+  __v: Int!
+}
+
+type Comment {
+  _id: ID!
+  user: User!
+  text: String!
+  likes: [User!]!
+  replies: [Reply!]!
+  createdAt: String!
+  updatedAt: String!
+  __v: Int!
+}
+
+type Mutation {
+  createUser(username: String!, email: String!, password: String!, fullName: String!): User!
+  createPost(userId: ID!, caption: String!): Post!
+  createComment(postId: ID!, userId: ID!, text: String!): Comment!
+}
